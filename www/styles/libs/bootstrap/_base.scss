@@ -1,0 +1,85 @@
+$linkColor       : #00a0be;
+$linkColorActive : #00a0be;
+$baseColor       : #333;
+$brandColor      : #00a0c8;
+$baseFont        : 'Avenir35Light', arial, 'sans-serif';
+$defaultFontSize : 16px; /* 100% */
+
+/* Susy Settings */
+$total-columns  : 4;
+$column-width   : 4em;
+$gutter-width   : 1em;
+$grid-padding   : $gutter-width;
+
+$break1 : 8;
+$break2 : 10;
+$break3 : 12;
+
+*, *::after, *::before{
+  @include box-sizing( border-box );
+}
+
+a {
+  color: $linkColor;
+  text-decoration: none;
+
+  &:hover, &:focus {
+    color: $linkColorActive;
+    text-decoration: underline;
+  }
+}
+
+body {
+  color: $baseColor;
+  font-family: $baseFont;
+  font-size: 100%;
+  line-height: 1.625;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  color: $brandColor;
+  font-family: 'DinLight';
+  font-weight: normal;
+  line-height: inherit;
+}
+
+@include at-breakpoint($break1) {
+  h1, .alpha {
+    @include font-size-in-em( 45px );
+  }
+
+  h2, .beta {
+    @include font-size-in-em( 35px );
+  }
+
+  h3, .gamma {
+    @include font-size-in-em( 30px );
+  }
+
+  h4, .delta {
+    @include font-size-in-em( 26px );
+  }
+
+  h5, .teta {
+    @include font-size-in-em( 20px );
+  }
+
+  h6, .zeta {
+    @include font-size-in-em( 18px );
+  }
+}
+
+.btn {
+  border: 0;
+  background-color: #fff;
+}
+
+.iconfonts {
+  font-family: 'icomoon';
+}
+
+img {
+  max-width: 100%;
+}

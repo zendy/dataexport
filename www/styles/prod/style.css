@@ -1,0 +1,615 @@
+/* Will be compiled down to a single stylesheet with your sass files */
+/* normalize.css v2.1.0 | MIT License | git.io/normalize */
+/* ==========================================================================
+   HTML5 display definitions
+   ========================================================================== */
+/**
+ * Correct `block` display not defined in IE 8/9.
+ */
+/* line 22, ../libs/bootstrap/_reset.scss */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+nav,
+section,
+summary {
+  display: block;
+}
+
+/**
+ * Correct `inline-block` display not defined in IE 8/9.
+ */
+/* line 32, ../libs/bootstrap/_reset.scss */
+audio,
+canvas,
+video {
+  display: inline-block;
+}
+
+/**
+ * Prevent modern browsers from displaying `audio` without controls.
+ * Remove excess height in iOS 5 devices.
+ */
+/* line 41, ../libs/bootstrap/_reset.scss */
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+
+/**
+ * Address styling not present in IE 8/9.
+ */
+/* line 50, ../libs/bootstrap/_reset.scss */
+[hidden] {
+  display: none;
+}
+
+/* ==========================================================================
+   Base
+   ========================================================================== */
+/**
+ * 1. Set default font family to sans-serif.
+ * 2. Prevent iOS text size adjust after orientation change, without disabling
+ *    user zoom.
+ */
+/* line 64, ../libs/bootstrap/_reset.scss */
+html {
+  font-family: sans-serif;
+  /* 1 */
+  -webkit-text-size-adjust: 100%;
+  /* 2 */
+  -ms-text-size-adjust: 100%;
+  /* 2 */
+}
+
+/**
+ * Remove default margin.
+ */
+/* line 74, ../libs/bootstrap/_reset.scss */
+body {
+  margin: 0;
+}
+
+/* ==========================================================================
+   Links
+   ========================================================================== */
+/**
+ * Address `outline` inconsistency between Chrome and other browsers.
+ */
+/* line 86, ../libs/bootstrap/_reset.scss */
+a:focus {
+  outline: thin dotted #333;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+
+/**
+ * Improve readability when focused and also mouse hovered in all browsers.
+ */
+/* line 95, ../libs/bootstrap/_reset.scss */
+a:active,
+a:hover {
+  outline: 0;
+}
+
+/* ==========================================================================
+   Typography
+   ========================================================================== */
+/**
+ * Address variable `h1` font-size and margin within `section` and `article`
+ * contexts in Firefox 4+, Safari 5, and Chrome.
+ */
+/* line 108, ../libs/bootstrap/_reset.scss */
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+/**
+ * Address styling not present in IE 8/9, Safari 5, and Chrome.
+ */
+/* line 117, ../libs/bootstrap/_reset.scss */
+abbr[title] {
+  border-bottom: 1px dotted;
+}
+
+/**
+ * Address style set to `bolder` in Firefox 4+, Safari 5, and Chrome.
+ */
+/* line 126, ../libs/bootstrap/_reset.scss */
+b,
+strong {
+  font-weight: bold;
+}
+
+/**
+ * Address styling not present in Safari 5 and Chrome.
+ */
+/* line 134, ../libs/bootstrap/_reset.scss */
+dfn {
+  font-style: italic;
+}
+
+/**
+ * Address differences between Firefox and other browsers.
+ */
+/* line 142, ../libs/bootstrap/_reset.scss */
+hr {
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  height: 0;
+}
+
+/**
+ * Address styling not present in IE 8/9.
+ */
+/* line 152, ../libs/bootstrap/_reset.scss */
+mark {
+  background: #ff0;
+  color: #000;
+}
+
+/**
+ * Correct font family set oddly in Safari 5 and Chrome.
+ */
+/* line 164, ../libs/bootstrap/_reset.scss */
+code,
+kbd,
+pre,
+samp {
+  font-family: monospace, serif;
+  font-size: 1em;
+}
+
+/**
+ * Improve readability of pre-formatted text in all browsers.
+ */
+/* line 173, ../libs/bootstrap/_reset.scss */
+pre {
+  white-space: pre-wrap;
+}
+
+/**
+ * Set consistent quote types.
+ */
+/* line 181, ../libs/bootstrap/_reset.scss */
+q {
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+/**
+ * Address inconsistent and variable font size in all browsers.
+ */
+/* line 189, ../libs/bootstrap/_reset.scss */
+small {
+  font-size: 80%;
+}
+
+/**
+ * Prevent `sub` and `sup` affecting `line-height` in all browsers.
+ */
+/* line 198, ../libs/bootstrap/_reset.scss */
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+/* line 205, ../libs/bootstrap/_reset.scss */
+sup {
+  top: -0.5em;
+}
+
+/* line 209, ../libs/bootstrap/_reset.scss */
+sub {
+  bottom: -0.25em;
+}
+
+/* ==========================================================================
+   Embedded content
+   ========================================================================== */
+/**
+ * Remove border when inside `a` element in IE 8/9.
+ */
+/* line 221, ../libs/bootstrap/_reset.scss */
+img {
+  border: 0;
+}
+
+/**
+ * Correct overflow displayed oddly in IE 9.
+ */
+/* line 229, ../libs/bootstrap/_reset.scss */
+svg:not(:root) {
+  overflow: hidden;
+}
+
+/* ==========================================================================
+   Figures
+   ========================================================================== */
+/**
+ * Address margin not present in IE 8/9 and Safari 5.
+ */
+/* line 241, ../libs/bootstrap/_reset.scss */
+figure {
+  margin: 0;
+}
+
+/* ==========================================================================
+   Forms
+   ========================================================================== */
+/**
+ * Define consistent border, margin, and padding.
+ */
+/* line 253, ../libs/bootstrap/_reset.scss */
+fieldset {
+  border: 1px solid #c0c0c0;
+  margin: 0 2px;
+  padding: 0.35em 0.625em 0.75em;
+}
+
+/**
+ * 1. Correct `color` not being inherited in IE 8/9.
+ * 2. Remove padding so people aren't caught out if they zero out fieldsets.
+ */
+/* line 264, ../libs/bootstrap/_reset.scss */
+legend {
+  border: 0;
+  /* 1 */
+  padding: 0;
+  /* 2 */
+}
+
+/**
+ * 1. Correct font family not being inherited in all browsers.
+ * 2. Correct font size not being inherited in all browsers.
+ * 3. Address margins set differently in Firefox 4+, Safari 5, and Chrome.
+ */
+/* line 278, ../libs/bootstrap/_reset.scss */
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+  /* 1 */
+  font-size: 100%;
+  /* 2 */
+  margin: 0;
+  /* 3 */
+}
+
+/**
+ * Address Firefox 4+ setting `line-height` on `input` using `!important` in
+ * the UA stylesheet.
+ */
+/* line 290, ../libs/bootstrap/_reset.scss */
+button,
+input {
+  line-height: normal;
+}
+
+/**
+ * Address inconsistent `text-transform` inheritance for `button` and `select`.
+ * All other form control elements do not inherit `text-transform` values.
+ * Correct `button` style inheritance in Chrome, Safari 5+, and IE 8+.
+ * Correct `select` style inheritance in Firefox 4+ and Opera.
+ */
+/* line 302, ../libs/bootstrap/_reset.scss */
+button,
+select {
+  text-transform: none;
+}
+
+/**
+ * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`
+ *    and `video` controls.
+ * 2. Correct inability to style clickable `input` types in iOS.
+ * 3. Improve usability and consistency of cursor style between image-type
+ *    `input` and others.
+ */
+/* line 317, ../libs/bootstrap/_reset.scss */
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  -webkit-appearance: button;
+  /* 2 */
+  cursor: pointer;
+  /* 3 */
+}
+
+/**
+ * Re-set default cursor for disabled elements.
+ */
+/* line 327, ../libs/bootstrap/_reset.scss */
+button[disabled],
+html input[disabled] {
+  cursor: default;
+}
+
+/**
+ * 1. Address box sizing set to `content-box` in IE 8/9.
+ * 2. Remove excess padding in IE 8/9.
+ */
+/* line 337, ../libs/bootstrap/_reset.scss */
+input[type="checkbox"],
+input[type="radio"] {
+  box-sizing: border-box;
+  /* 1 */
+  padding: 0;
+  /* 2 */
+}
+
+/**
+ * 1. Address `appearance` set to `searchfield` in Safari 5 and Chrome.
+ * 2. Address `box-sizing` set to `border-box` in Safari 5 and Chrome
+ *    (include `-moz` to future-proof).
+ */
+/* line 348, ../libs/bootstrap/_reset.scss */
+input[type="search"] {
+  -webkit-appearance: textfield;
+  /* 1 */
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  /* 2 */
+  box-sizing: content-box;
+}
+
+/**
+ * Remove inner padding and search cancel button in Safari 5 and Chrome
+ * on OS X.
+ */
+/* line 361, ../libs/bootstrap/_reset.scss */
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/**
+ * Remove inner padding and border in Firefox 4+.
+ */
+/* line 370, ../libs/bootstrap/_reset.scss */
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+/**
+ * 1. Remove default vertical scrollbar in IE 8/9.
+ * 2. Improve readability and alignment in all browsers.
+ * 3. Don't allow textarea to be resized
+ */
+/* line 381, ../libs/bootstrap/_reset.scss */
+textarea {
+  overflow: auto;
+  /* 1 */
+  resize: none;
+  vertical-align: top;
+  /* 2 */
+}
+
+/* ==========================================================================
+   Tables
+   ========================================================================== */
+/**
+ * Remove most spacing between table cells.
+ */
+/* line 395, ../libs/bootstrap/_reset.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* ==========================================================================
+   Lists
+   ========================================================================== */
+/**
+ * Remove padding before lists.
+ * Remove margin before lists
+ * Remove list stye type
+ */
+/* line 410, ../libs/bootstrap/_reset.scss */
+ul {
+  padding: 0;
+  margin-bottom: 0;
+  margin-top: 0;
+  list-style-type: none;
+}
+
+/* ==========================================================================
+   Content block
+   ========================================================================== */
+/**
+ * Set margin before and after paragraph.
+ */
+/* line 425, ../libs/bootstrap/_reset.scss */
+p {
+  margin-bottom: 0.2em;
+  margin-top: 0.2em;
+}
+
+/* line 7, ../libs/bootstrap/_utilities.scss */
+.pull-right {
+  float: right;
+}
+
+/* line 10, ../libs/bootstrap/_utilities.scss */
+.pull-left {
+  float: left;
+}
+
+/* line 15, ../libs/bootstrap/_utilities.scss */
+.hide {
+  display: none;
+}
+
+/* line 18, ../libs/bootstrap/_utilities.scss */
+.show {
+  display: block;
+}
+
+/* line 23, ../libs/bootstrap/_utilities.scss */
+.invisible {
+  visibility: hidden;
+}
+
+/* line 28, ../libs/bootstrap/_utilities.scss */
+.affix {
+  position: fixed;
+}
+
+/* line 33, ../libs/bootstrap/_utilities.scss */
+.clearfix {
+  *zoom: 1;
+}
+/* line 15, ../libs/bootstrap/_mixins.scss */
+.clearfix:before, .clearfix:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+/* line 22, ../libs/bootstrap/_mixins.scss */
+.clearfix:after {
+  clear: both;
+}
+
+/* line 38, ../libs/bootstrap/_utilities.scss */
+.hide-text {
+  font: 0/0 a;
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0;
+}
+
+/* line 43, ../libs/bootstrap/_utilities.scss */
+.input-block-level {
+  display: block;
+  width: 100%;
+  min-height: 30px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* 100% */
+/* Susy Settings */
+/* line 18, ../libs/bootstrap/_base.scss */
+*, *::after, *::before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* line 22, ../libs/bootstrap/_base.scss */
+a {
+  color: #00a0be;
+  text-decoration: none;
+}
+/* line 26, ../libs/bootstrap/_base.scss */
+a:hover, a:focus {
+  color: #00a0be;
+  text-decoration: underline;
+}
+
+/* line 32, ../libs/bootstrap/_base.scss */
+body {
+  color: #333333;
+  font-family: "Avenir35Light", arial, "sans-serif";
+  font-size: 100%;
+  line-height: 1.625;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* line 40, ../libs/bootstrap/_base.scss */
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  color: #00a0c8;
+  font-family: 'DinLight';
+  font-weight: normal;
+  line-height: inherit;
+}
+
+@media (min-width: 39em) {
+  /* line 49, ../libs/bootstrap/_base.scss */
+  h1, .alpha {
+    font-size: 2.8125em;
+  }
+
+  /* line 53, ../libs/bootstrap/_base.scss */
+  h2, .beta {
+    font-size: 2.1875em;
+  }
+
+  /* line 57, ../libs/bootstrap/_base.scss */
+  h3, .gamma {
+    font-size: 1.875em;
+  }
+
+  /* line 61, ../libs/bootstrap/_base.scss */
+  h4, .delta {
+    font-size: 1.625em;
+  }
+
+  /* line 65, ../libs/bootstrap/_base.scss */
+  h5, .teta {
+    font-size: 1.25em;
+  }
+
+  /* line 69, ../libs/bootstrap/_base.scss */
+  h6, .zeta {
+    font-size: 1.125em;
+  }
+}
+/* line 74, ../libs/bootstrap/_base.scss */
+.btn {
+  border: 0;
+  background-color: #fff;
+}
+
+/* line 79, ../libs/bootstrap/_base.scss */
+.iconfonts {
+  font-family: 'icomoon';
+}
+
+/* line 83, ../libs/bootstrap/_base.scss */
+img {
+  max-width: 100%;
+}
+
+/* line 1, ../libs/bootstrap/_layout.scss */
+header {
+  left: 0;
+  position: fixed;
+  top: 0;
+}
+
+/* line 1, ../libs/bootstrap/_header.scss */
+header {
+  padding: 2em 0;
+  width: 100%;
+  text-align: center;
+}
+/* line 6, ../libs/bootstrap/_header.scss */
+header .btn {
+  display: inline-block;
+  background-color: #ccc;
+  border: 1px solid #ccc;
+  border-radius: 1em;
+}
+
+/* line 1, ../libs/bootstrap/_main.scss */
+main {
+  height: 25em;
+  margin-top: 6em;
+  border: 2px dashed #999;
+}
