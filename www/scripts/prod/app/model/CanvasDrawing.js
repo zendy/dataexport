@@ -87,5 +87,5 @@
 }).call(this);
 
 /*
-//# sourceMappingURL=CanvasDrawing.js.map
+//@ sourceMappingURL=CanvasDrawing.js.map
 */

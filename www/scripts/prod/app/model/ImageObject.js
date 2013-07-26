@@ -38,5 +38,5 @@
 }).call(this);
 
 /*
-//# sourceMappingURL=ImageObject.js.map
+//@ sourceMappingURL=ImageObject.js.map
 */

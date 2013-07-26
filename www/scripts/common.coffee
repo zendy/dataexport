@@ -2,9 +2,8 @@
 
 requirejs.config
   shim:
-    flexslider :
-      deps: [ 'jquery' ]
+    prism : []
 
   paths:
-    flexslider : 'libs/jquery.flexslider-min'
     jquery     : 'libs/jquery.min'
+    prism      : 'libs/prism'

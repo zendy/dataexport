@@ -33,5 +33,5 @@
 }).call(this);
 
 /*
-//# sourceMappingURL=TextObject.js.map
+//@ sourceMappingURL=TextObject.js.map
 */

@@ -1,80 +1,88 @@
 (function() {
   'use strict';
-  define(['./model/CanvasDrawing', './model/ImageObject', './model/TextObject'], function(CanvasDrawing, ImageObject, TextObject) {
-    var addNewImageObject, addNewTextObject, canvas, canvasCtx, canvasHeight, canvasLeftPos, canvasTopPos, canvasWidth, elBtn1, elBtn2, elCanvas, elCanvasContainer, getPosInCanvas, mouseDownInCanvas, mouseMoveInCanvas, mouseUpInCanvas, optionsCanvasDrawing;
-    elCanvasContainer = document.querySelector('.mainContainer');
-    elCanvas = document.querySelector('.mainContainer__canvas');
-    canvasLeftPos = elCanvas.offsetLeft;
-    canvasTopPos = elCanvas.offsetTop;
-    canvasHeight = elCanvasContainer.offsetHeight;
-    canvasWidth = elCanvasContainer.offsetWidth;
-    canvasCtx = elCanvas.getContext('2d');
-    optionsCanvasDrawing = {
-      canvasContainer: elCanvasContainer,
-      canvasElement: elCanvas,
-      canvasLeftPos: canvasLeftPos,
-      canvasTopPos: canvasTopPos,
-      canvasHeight: canvasHeight,
-      canvasWidth: canvasWidth,
-      canvasCtx: canvasCtx
-    };
-    canvas = new CanvasDrawing(optionsCanvasDrawing);
-    window.onresize = function() {
-      canvas.resizeCanvas();
-      return canvas.redrawCanvas();
-    };
-    mouseDownInCanvas = function(ev) {
-      var posInCanvas;
-      posInCanvas = getPosInCanvas(ev);
-      return canvas.checkCollision(posInCanvas.x, posInCanvas.y);
-    };
-    mouseMoveInCanvas = function(ev) {
-      var activeObjectID, posInCanvas;
-      activeObjectID = canvas.getActiveObjectID();
-      console.log(activeObjectID);
-      if (activeObjectID > -1) {
-        canvas.resetCanvas();
-        posInCanvas = getPosInCanvas(ev);
-        canvas.moveObject(activeObjectID, posInCanvas.x, posInCanvas.y);
-        return canvas.redrawCanvas();
+  define([], function() {
+    var dropArea, handleDragOver, handleFileSelect, headerColumn, processColumns, processLines, timedChunk;
+    headerColumn = [];
+    handleFileSelect = function(ev) {
+      var file, files, reader, _i, _len, _results;
+      ev.stopPropagation();
+      ev.preventDefault();
+      files = ev.dataTransfer.files;
+      _results = [];
+      for (_i = 0, _len = files.length; _i < _len; _i++) {
+        file = files[_i];
+        reader = new FileReader();
+        reader.onload = (function(file) {
+          return function(e) {
+            var lines;
+            lines = e.target.result.split(/\r|\r?\n/g);
+            return processLines(lines);
+          };
+        })(file);
+        _results.push(reader.readAsText(file));
       }
+      return _results;
     };
-    mouseUpInCanvas = function() {
-      return canvas.setActiveObjectID(-1);
+    handleDragOver = function(ev) {
+      ev.stopPropagation();
+      ev.preventDefault();
+      return ev.dataTransfer.dropEffect = 'copy';
     };
-    elCanvas.addEventListener('mousedown', mouseDownInCanvas, false);
-    elCanvas.addEventListener('mousemove', mouseMoveInCanvas, false);
-    elCanvas.addEventListener('mouseup', mouseUpInCanvas, false);
-    addNewImageObject = function() {
-      var options;
-      options = {
-        ctx: canvasCtx,
-        height: 50,
-        width: 50
-      };
-      return canvas.addObject(new ImageObject(options));
+    processLines = function(lines) {
+      var header, headerName, i, _i, _len;
+      header = lines.shift().split(',');
+      for (i = _i = 0, _len = header.length; _i < _len; i = ++_i) {
+        headerName = header[i];
+        headerColumn.push(headerName);
+      }
+      return timedChunk(lines);
     };
-    elBtn1 = document.querySelector('.btn1');
-    elBtn1.addEventListener('click', addNewImageObject, false);
-    addNewTextObject = function() {
-      var options;
-      options = {
-        ctx: canvasCtx
-      };
-      return canvas.addObject(new TextObject(options));
+    processColumns = function(columns, id) {
+      var codeBlock, output;
+      codeBlock = document.createElement('code');
+      codeBlock.classList.add('language-markup');
+      output = columns;
+      codeBlock.insertAdjacentHTML('beforeend', output);
+      return codeBlock;
     };
-    elBtn2 = document.querySelector('.btn2');
-    elBtn2.addEventListener('click', addNewTextObject, false);
-    return getPosInCanvas = function(ev) {
-      return {
-        x: ev.x - canvasLeftPos,
-        y: ev.y - canvasTopPos
-      };
+    timedChunk = function(lines) {
+      var br, id, linesCopy, maxLines, meterBar, preBlock, progressBar;
+      preBlock = document.createDocumentFragment();
+      br = document.createElement('br');
+      meterBar = document.getElementById('js-progressbar__meter');
+      progressBar = meterBar.parentNode;
+      meterBar.classList.remove('progressbar__meter--completed');
+      progressBar.classList.add('progressbar--animate');
+      linesCopy = lines.concat();
+      maxLines = linesCopy.length;
+      id = 1;
+      return setTimeout(function() {
+        var columns, start;
+        start = +new Date();
+        while (linesCopy.length > 0 && (+new Date() - start < 50)) {
+          columns = linesCopy.shift().split(',');
+          id++;
+          preBlock.appendChild(processColumns.call(null, columns, id));
+          preBlock.appendChild(br);
+        }
+        document.getElementById('output').children[0].appendChild(preBlock);
+        if (linesCopy.length > 0) {
+          meterBar.style.width = ((maxLines - linesCopy.length) / maxLines * 100) + '%';
+          return setTimeout(arguments.callee, 25);
+        } else {
+          meterBar.style.width = '100%';
+          meterBar.classList.add('progressbar__meter--completed');
+          return progressBar.classList.remove('progressbar--animate');
+        }
+      }, 25);
     };
+    dropArea = document.querySelector('.droparea');
+    dropArea.addEventListener('dragover', handleDragOver, false);
+    return dropArea.addEventListener('drop', handleFileSelect, false);
   });
 
 }).call(this);
 
 /*
-//# sourceMappingURL=application_main.js.map
+//@ sourceMappingURL=application_main.js.map
 */
