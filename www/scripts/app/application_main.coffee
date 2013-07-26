@@ -2,6 +2,7 @@
 
 define [], () ->
   headerColumn = []
+  dataLines = null
 
   handleFileSelect = ( ev ) ->
     ev.stopPropagation()
@@ -35,16 +36,52 @@ define [], () ->
     for headerName, i in header
       headerColumn.push headerName
 
-    timedChunk lines
+    printHeaders()
+
+    # timedChunk lines
+    dataLines = lines
+
+  printHeaders = () ->
+    # print headers and it's code into a table
+    elCSVHeaders = document.querySelector '.js-csvHeaders'
+    frag = document.createDocumentFragment()
+
+    for headerName, i in headerColumn
+      elTr = document.createElement 'tr'
+      elTdName = document.createElement 'td'
+      elTdCode = document.createElement 'td'
+
+      elTdName.appendChild( document.createTextNode headerName )
+      elTdCode.appendChild( document.createTextNode i )
+
+      elTr.appendChild elTdName
+      elTr.appendChild elTdCode
+      frag.appendChild elTr
+
+    elCSVHeaders.appendChild frag
 
   processColumns = ( columns, id ) ->
     codeBlock = document.createElement 'code'
     codeBlock.classList.add 'language-markup'
-    output = columns
+    output = formatExportData columns
     codeBlock.insertAdjacentHTML 'beforeend', output
     codeBlock
 
-  timedChunk = ( lines ) ->
+  formatExportData = ( columns ) ->
+    # format result text according to the textbox
+    elOutputToBe = document.querySelector '.js-outputToBe'
+    formatText = elOutputToBe.value
+    textToBeReplaced = formatText.match(/\[.\]/g)
+
+    for val in textToBeReplaced
+      formatText = formatText.replace val, columns[ val.replace /[^0-9\.]+/g , '' ].trim()
+
+    formatText
+
+  timedChunk = () ->
+    # process dataLines in a batch
+    lines = dataLines
+
     # create document fragment
     preBlock = document.createDocumentFragment()
     br = document.createElement 'br'
@@ -88,3 +125,7 @@ define [], () ->
   dropArea = document.querySelector '.droparea'
   dropArea.addEventListener 'dragover', handleDragOver, false
   dropArea.addEventListener 'drop', handleFileSelect, false
+
+  btnExport = document.querySelector '.js-startExport'
+  btnExport.addEventListener 'click', timedChunk, false
+

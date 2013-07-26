@@ -1,8 +1,9 @@
 (function() {
   'use strict';
   define([], function() {
-    var dropArea, handleDragOver, handleFileSelect, headerColumn, processColumns, processLines, timedChunk;
+    var btnExport, dataLines, dropArea, formatExportData, handleDragOver, handleFileSelect, headerColumn, printHeaders, processColumns, processLines, timedChunk;
     headerColumn = [];
+    dataLines = null;
     handleFileSelect = function(ev) {
       var file, files, reader, _i, _len, _results;
       ev.stopPropagation();
@@ -35,18 +36,48 @@
         headerName = header[i];
         headerColumn.push(headerName);
       }
-      return timedChunk(lines);
+      printHeaders();
+      return dataLines = lines;
+    };
+    printHeaders = function() {
+      var elCSVHeaders, elTdCode, elTdName, elTr, frag, headerName, i, _i, _len;
+      elCSVHeaders = document.querySelector('.js-csvHeaders');
+      frag = document.createDocumentFragment();
+      for (i = _i = 0, _len = headerColumn.length; _i < _len; i = ++_i) {
+        headerName = headerColumn[i];
+        elTr = document.createElement('tr');
+        elTdName = document.createElement('td');
+        elTdCode = document.createElement('td');
+        elTdName.appendChild(document.createTextNode(headerName));
+        elTdCode.appendChild(document.createTextNode(i));
+        elTr.appendChild(elTdName);
+        elTr.appendChild(elTdCode);
+        frag.appendChild(elTr);
+      }
+      return elCSVHeaders.appendChild(frag);
     };
     processColumns = function(columns, id) {
       var codeBlock, output;
       codeBlock = document.createElement('code');
       codeBlock.classList.add('language-markup');
-      output = columns;
+      output = formatExportData(columns);
       codeBlock.insertAdjacentHTML('beforeend', output);
       return codeBlock;
     };
-    timedChunk = function(lines) {
-      var br, id, linesCopy, maxLines, meterBar, preBlock, progressBar;
+    formatExportData = function(columns) {
+      var elOutputToBe, formatText, textToBeReplaced, val, _i, _len;
+      elOutputToBe = document.querySelector('.js-outputToBe');
+      formatText = elOutputToBe.value;
+      textToBeReplaced = formatText.match(/\[.\]/g);
+      for (_i = 0, _len = textToBeReplaced.length; _i < _len; _i++) {
+        val = textToBeReplaced[_i];
+        formatText = formatText.replace(val, columns[val.replace(/[^0-9\.]+/g, '')].trim());
+      }
+      return formatText;
+    };
+    timedChunk = function() {
+      var br, id, lines, linesCopy, maxLines, meterBar, preBlock, progressBar;
+      lines = dataLines;
       preBlock = document.createDocumentFragment();
       br = document.createElement('br');
       meterBar = document.getElementById('js-progressbar__meter');
@@ -78,7 +109,9 @@
     };
     dropArea = document.querySelector('.droparea');
     dropArea.addEventListener('dragover', handleDragOver, false);
-    return dropArea.addEventListener('drop', handleFileSelect, false);
+    dropArea.addEventListener('drop', handleFileSelect, false);
+    btnExport = document.querySelector('.js-startExport');
+    return btnExport.addEventListener('click', timedChunk, false);
   });
 
 }).call(this);
