@@ -13,25 +13,26 @@
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
 
-        <link rel="stylesheet" href="styles/main.css">
-        <link rel="stylesheet" href="styles/prism.css">
-        <script src="scripts/vendor/modernizr.min.js"></script>
+        <link rel="stylesheet" href="styles/prod/main.css">
+        <link rel="stylesheet" href="styles/libs/prism/prism.css">
     </head>
     <body>
-        <div class="row-fluid">
-            <div class="span12">
-                <section id="droparea">
-                  <div>
-                    Drop images or a folder of them
-                  </div>
-                </section>
-            </div>
-            <div class="span6 offset3">
-                <div class="progressbar">
-                    <span id="js-progressbar__meter" class="progressbar__meter" style="width: 0;"><span></span></span>
-                </div>
-            </div>
+
+        <div class="droparea">
+            <span>
+                Drop images or a folder of them
+            </span>
         </div>
+
+        <div class="progressbar">
+            <span id="js-progressbar__meter" class="progressbar__meter" style="width: 0;"><span></span></span>
+        </div>
+
+        <section id="output">
+            <h1>Output</h1>
+            <pre class="language-markup"></pre>
+        </section>
+
         <!-- <div class="row-fluid">
             <div class="span12">
                 <section class="separator">OR</section>
@@ -46,19 +47,6 @@
                 </section>
             </div>
         </div> -->
-        <div class="row-fluid">
-            <div class="span12">
-                <section id="output">
-                    <pre class="language-markup"></pre>
-                </section>
-            </div>
-        </div>
-
-    <!--[if lt IE 7]>
-        <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
-    <![endif]-->
-
-    <!-- Add your site or application content here -->
 
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
