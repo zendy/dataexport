@@ -71,7 +71,9 @@ define [], () ->
     # format result text according to the textbox
     elOutputToBe = document.querySelector '.js-outputToBe'
     formatText = elOutputToBe.value
-    textToBeReplaced = formatText.match(/\[.\]/g)
+    textToBeReplaced = formatText.match(/\[.*\]/g)
+
+    console.log "AAA", textToBeReplaced
 
     for val in textToBeReplaced
       formatText = formatText.replace val, columns[ val.replace /[^0-9\.]+/g , '' ].trim()

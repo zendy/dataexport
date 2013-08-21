@@ -68,7 +68,8 @@
       var elOutputToBe, formatText, textToBeReplaced, val, _i, _len;
       elOutputToBe = document.querySelector('.js-outputToBe');
       formatText = elOutputToBe.value;
-      textToBeReplaced = formatText.match(/\[.\]/g);
+      textToBeReplaced = formatText.match(/\[.*\]/g);
+      console.log("AAA", textToBeReplaced);
       for (_i = 0, _len = textToBeReplaced.length; _i < _len; _i++) {
         val = textToBeReplaced[_i];
         formatText = formatText.replace(val, columns[val.replace(/[^0-9\.]+/g, '')].trim());
