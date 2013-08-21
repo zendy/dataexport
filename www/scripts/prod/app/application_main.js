@@ -1,5 +1,4 @@
 (function() {
-  'use strict';
   define([], function() {
     var btnExport, dataLines, dropArea, formatExportData, handleDragOver, handleFileSelect, headerColumn, printHeaders, processColumns, processLines, timedChunk;
     headerColumn = [];
